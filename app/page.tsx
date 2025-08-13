@@ -15,10 +15,10 @@ import CTABanner from "@/components/sections/CTABanner";
 import PricingTeaser from "@/components/sections/PricingTeaser";
 import Footer from "@/components/sections/Footer";
 
+export const runtime = "edge";
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-
 export default function Home() {
   useEffect(() => {
     // Initialize GSAP ScrollTrigger
