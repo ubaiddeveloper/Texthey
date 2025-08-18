@@ -33,13 +33,37 @@ const Hero = () => {
 
       // Animate headline with staggered text reveal (idempotent in Strict Mode)
       const headline = headlineRef.current!;
-      const baseText =
-        headline.getAttribute("data-headline") || headline.textContent || "";
-      headline.setAttribute("data-headline", baseText);
-      headline.innerHTML = baseText
-        .split(" ")
-        .map((word) => `<span class="inline-block">${word}</span>`)
-        .join(" ");
+      const spans = headline.querySelectorAll("span");
+
+      // Only process if we don't already have the animated spans
+      if (spans.length === 0) {
+        const baseText =
+          headline.getAttribute("data-headline") || headline.textContent || "";
+        headline.setAttribute("data-headline", baseText);
+
+        // Get the individual span elements and process them
+        const bookingSpan = headline.querySelector("span.whitespace-nowrap");
+        const justGotTextyText = headline.lastChild?.textContent?.trim() || "";
+
+        if (bookingSpan) {
+          // Split "Booking Appointments" into word spans
+          const bookingWords = bookingSpan.textContent?.split(" ") || [];
+          bookingSpan.innerHTML = bookingWords
+            .map((word) => `<span class="inline-block">${word}</span>`)
+            .join(" ");
+        }
+
+        // Split "Just Got Texty" into word spans
+        const justGotTextyWords = justGotTextyText.split(" ");
+        const justGotTextySpans = justGotTextyWords
+          .map((word) => `<span class="inline-block">${word}</span>`)
+          .join(" ");
+
+        // Replace the text after the br with spans
+        headline.innerHTML = `<span class="whitespace-nowrap">${
+          bookingSpan?.innerHTML || ""
+        }</span><br />${justGotTextySpans}`;
+      }
 
       tl.from(headline.children, {
         duration: 0.8,
@@ -69,6 +93,7 @@ const Hero = () => {
           },
           "-=0.2"
         )
+        .set(".hero-cta", { opacity: 1, y: 0 })
         .from(
           deviceRef.current!,
           {
@@ -107,12 +132,15 @@ const Hero = () => {
       // Animate counter numbers
       const counters = document.querySelectorAll(".counter");
       counters.forEach((counter) => {
-        const target = parseInt(counter.getAttribute("data-target") || "0");
+        const targetStr = counter.getAttribute("data-target") || "0";
+        const target = parseFloat(targetStr);
+        const isDecimal = targetStr.includes(".");
+
         gsap.to(counter, {
           innerHTML: target,
           duration: 2,
           ease: "power2.out",
-          snap: { innerHTML: 1 },
+          snap: isDecimal ? { innerHTML: 0.1 } : { innerHTML: 1 },
           scrollTrigger: {
             trigger: counter,
             start: "top 80%",
@@ -148,36 +176,24 @@ const Hero = () => {
               ref={headlineRef}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
             >
-              Booking Appointments Just Got Texty
+              <span className="whitespace-nowrap">Booking Appointments</span>
+              <br />
+              Just Got Texty
             </h1>
 
             <p className="hero-subtext text-xl text-gray-600 mb-8 leading-relaxed">
-              Clients book, reschedule, and pay — all by texting. No apps. No
-              hassle. Trusted by businesses worldwide to reduce no-shows and
-              boost bookings.
+              Clients book, reschedule, and pay — all by texting.
+              <br />
+              No apps. No Calls. No hassle.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+            <div className="flex justify-center lg:justify-start mb-12">
               <Button
                 size="lg"
-                className="hero-cta bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 text-lg font-semibold transition-all duration-200 hover:scale-105"
+                className="hero-cta bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold transition-all duration-200 hover:scale-105"
+                style={{ opacity: 1, transform: "translateY(0px)" }}
               >
-                Start Free Trial
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="hero-cta border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-4 text-lg font-semibold transition-all duration-200 hover:scale-105"
-              >
-                Book a Demo
-              </Button>
-              <Button
-                variant="ghost"
-                size="lg"
-                className="hero-cta text-slate-600 hover:text-slate-900 px-8 py-4 text-lg font-semibold transition-all duration-200"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Overview
+                Get Started Now
               </Button>
             </div>
 
@@ -217,7 +233,7 @@ const Hero = () => {
                   <Users className="h-6 w-6 text-teal-600 mr-2" />
                   <span
                     className="counter text-2xl font-bold text-slate-900"
-                    data-target="49"
+                    data-target="4.9"
                   >
                     0
                   </span>
@@ -226,11 +242,19 @@ const Hero = () => {
                 <p className="text-sm text-gray-600">Average rating</p>
               </div>
             </div>
+
+            {/* Trust Message */}
+            <div className="mt-6 text-center lg:text-left">
+              <p className="text-gray-600 italic">
+                Trusted by businesses worldwide to reduce no-shows and boost
+                bookings.
+              </p>
+            </div>
           </div>
 
           {/* Right Column - Device Mockup */}
           <div ref={deviceRef} className="relative">
-            <div className="relative max-w-md mx-auto">
+            <div className="relative max-w-sm mx-auto scale-90">
               {/* Phone Mockup */}
               <div className="bg-slate-900 rounded-[3rem] p-3 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <div className="bg-white rounded-[2.5rem] overflow-hidden">

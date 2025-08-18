@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { 
-  MessageSquare, 
-  Zap, 
-  Bell, 
-  Globe, 
-  Gift, 
-  Calendar, 
-  Users, 
-  BarChart3 
-} from 'lucide-react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import {
+  MessageSquare,
+  Zap,
+  Bell,
+  Globe,
+  Gift,
+  Calendar,
+  Users,
+  BarChart3,
+} from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const Features = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -21,7 +21,7 @@ const Features = () => {
     if (!sectionRef.current) return;
 
     gsap.fromTo(
-      '.feature-card',
+      ".feature-card",
       {
         y: 60,
         opacity: 0,
@@ -31,12 +31,12 @@ const Features = () => {
         opacity: 1,
         duration: 0.8,
         stagger: 0.1,
-        ease: 'power3.out',
+        ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
         },
       }
     );
@@ -45,51 +45,89 @@ const Features = () => {
   const features = [
     {
       icon: MessageSquare,
-      title: 'Book by Text',
-      description: 'Clients text a keyword to instantly start the booking process',
-      benefits: ['No app downloads required', 'Works on any phone', 'Natural conversation flow']
-    },
-    {
-      icon: Zap,
-      title: 'Smart Workflows',
-      description: 'Automate confirmations, payments, and staff notifications',
-      benefits: ['Auto-confirmations', 'Payment processing', 'Staff alerts']
-    },
-    {
-      icon: Bell,
-      title: 'Reminders & Follow-ups',
-      description: 'Smart reminders reduce no-shows and increase repeat bookings',
-      benefits: ['Customizable timing', 'Automated sequences', 'Rebook suggestions']
+      title: "Book by Text",
+      description:
+        "Eliminate missed opportunities with instant, text-based bookings.",
+      benefits: [
+        "No app downloads or complicated setup",
+        "Works on any mobile phone",
+        "Quick keyword-triggered start",
+      ],
     },
     {
       icon: Gift,
-      title: 'Campaigns',
-      description: 'Send targeted promotions and offers to your customer base',
-      benefits: ['Personalized offers', 'Seasonal campaigns', 'Birthday specials']
+      title: "Promotional Campaigns",
+      description:
+        "Fill your calendar and boost sales with targeted SMS campaigns.",
+      benefits: [
+        "Send offers to past & potential clients",
+        "Seasonal & special event promotions",
+        "Measurable results through campaign tracking",
+      ],
+    },
+    {
+      icon: Zap,
+      title: "1-Click Suggested Bookings",
+      description:
+        "Recover lost revenue and encourage repeat visits effortlessly.",
+      benefits: [
+        "Follow-up with pre-filled booking suggestions",
+        'Simple "Yes" reply to confirm',
+        "Works for both last-minute openings & recurring services",
+      ],
+    },
+    {
+      icon: Bell,
+      title: "Revenue Recovery",
+      description: "Turn cancellations into opportunities to rebook.",
+      benefits: [
+        "Auto rebooking prompts for canceled slots",
+        "Targeted offers to win back customers",
+        "Real-time availability",
+      ],
     },
     {
       icon: Globe,
-      title: 'Web Booking',
-      description: 'Offer both SMS and web booking options for maximum convenience',
-      benefits: ['Mobile-optimized', 'Embedded widgets', 'Real-time availability']
+      title: "Web Booking",
+      description:
+        "Give clients more ways to book with seamless web integration.",
+      benefits: [
+        "Mobile-friendly online booking",
+        "Embedded booking widgets for your site",
+        "Live availability syncing",
+      ],
     },
     {
       icon: Calendar,
-      title: 'Special Occasions',
-      description: 'Automatic birthday and holiday greetings with booking incentives',
-      benefits: ['Personal touch', 'Automated scheduling', 'Custom messages']
+      title: "Follow-up Reviews",
+      description:
+        "Build trust and attract more clients with post-service feedback requests.",
+      benefits: [
+        "Automated review prompts",
+        "Customizable message templates",
+        "Google review link integration",
+      ],
     },
     {
       icon: Users,
-      title: 'Staff Management',
-      description: 'Manage multiple team members with individual schedules and services',
-      benefits: ['Individual calendars', 'Service assignments', 'Availability control']
+      title: "Staff Management",
+      description: "Streamline team scheduling and service delivery.",
+      benefits: [
+        "Individual calendars",
+        "Service-specific assignments",
+        "Automated shift reminders",
+      ],
     },
     {
       icon: BarChart3,
-      title: 'Reports & Insights',
-      description: 'Track bookings, revenue, and campaign performance in real-time',
-      benefits: ['Revenue tracking', 'Booking analytics', 'Campaign metrics']
+      title: "Reports & Insights",
+      description:
+        "Make smarter business decisions with clear performance data.",
+      benefits: [
+        "Track revenue growth",
+        "Measure campaign ROI",
+        "Spot trends to improve retention",
+      ],
     },
   ];
 
@@ -101,8 +139,9 @@ const Features = () => {
             Everything You Need to Grow
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From simple text bookings to advanced automation, Text Hey provides all the tools 
-            to streamline your business and delight your customers.
+            From simple text bookings to advanced automation, Text Hey provides
+            all the tools to streamline your business and delight your
+            customers.
           </p>
         </div>
 
@@ -115,18 +154,21 @@ const Features = () => {
               <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-teal-200 transition-colors duration-300">
                 <feature.icon className="h-6 w-6 text-teal-600" />
               </div>
-              
+
               <h3 className="text-lg font-semibold text-slate-900 mb-3">
                 {feature.title}
               </h3>
-              
+
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                 {feature.description}
               </p>
 
               <ul className="space-y-1">
                 {feature.benefits.map((benefit, benefitIndex) => (
-                  <li key={benefitIndex} className="flex items-center text-xs text-gray-500">
+                  <li
+                    key={benefitIndex}
+                    className="flex items-center text-xs text-gray-500"
+                  >
                     <div className="w-1 h-1 bg-teal-500 rounded-full mr-2 flex-shrink-0"></div>
                     {benefit}
                   </li>
@@ -141,36 +183,54 @@ const Features = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                Built for Global Businesses
+                Manage Multiple Locations with Ease
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Whether you're a solo practitioner or managing multiple locations, 
-                Text Hey scales with your business. Support for multiple languages, 
-                currencies, and time zones means you can serve customers worldwide.
+                Whether you run a nationwide franchise or operate multiple
+                branches, Text Hey gives you the power to manage all locations
+                from one central dashboard. Keep every site in sync while still
+                tailoring bookings, promotions, and operations to each branch's
+                unique needs.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Multi-language support</span>
+                  <span className="text-gray-700">
+                    Centralized dashboard for all locations
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Multiple currency options</span>
+                  <span className="text-gray-700">
+                    Branch-level booking and campaign controls
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Time zone detection</span>
+                  <span className="text-gray-700">
+                    Performance tracking per location
+                  </span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Local phone number support</span>
+                  <span className="text-gray-700">
+                    Role-based access for managers and staff
+                  </span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  <span className="text-gray-700">
+                    Consistent branding across every branch
+                  </span>
                 </li>
               </ul>
             </div>
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
                 <div className="flex items-center justify-between mb-4">
-                  <h4 className="font-semibold text-slate-900">Global Dashboard</h4>
+                  <h4 className="font-semibold text-slate-900">
+                    Global Dashboard
+                  </h4>
                   <div className="text-sm text-teal-600 font-medium">Live</div>
                 </div>
                 <div className="space-y-3">
@@ -180,11 +240,17 @@ const Features = () => {
                         <span className="text-xs">🇺🇸</span>
                       </div>
                       <div>
-                        <div className="text-sm font-medium">New York Salon</div>
-                        <div className="text-xs text-gray-500">12 bookings today</div>
+                        <div className="text-sm font-medium">
+                          New York Salon
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          12 bookings today
+                        </div>
                       </div>
                     </div>
-                    <div className="text-sm font-medium text-green-600">$1,240</div>
+                    <div className="text-sm font-medium text-green-600">
+                      $1,240
+                    </div>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b border-gray-100">
                     <div className="flex items-center">
@@ -193,10 +259,14 @@ const Features = () => {
                       </div>
                       <div>
                         <div className="text-sm font-medium">London Spa</div>
-                        <div className="text-xs text-gray-500">8 bookings today</div>
+                        <div className="text-xs text-gray-500">
+                          8 bookings today
+                        </div>
                       </div>
                     </div>
-                    <div className="text-sm font-medium text-green-600">£890</div>
+                    <div className="text-sm font-medium text-green-600">
+                      £890
+                    </div>
                   </div>
                   <div className="flex items-center justify-between py-2">
                     <div className="flex items-center">
@@ -205,10 +275,14 @@ const Features = () => {
                       </div>
                       <div>
                         <div className="text-sm font-medium">Sydney Mobile</div>
-                        <div className="text-xs text-gray-500">15 bookings today</div>
+                        <div className="text-xs text-gray-500">
+                          15 bookings today
+                        </div>
                       </div>
                     </div>
-                    <div className="text-sm font-medium text-green-600">A$1,680</div>
+                    <div className="text-sm font-medium text-green-600">
+                      A$1,680
+                    </div>
                   </div>
                 </div>
               </div>
