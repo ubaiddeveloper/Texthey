@@ -3,6 +3,7 @@
 import { MessageSquare, Twitter, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import Image from 'next/image';
 
 const Footer = () => {
   const footerSections = [
@@ -71,7 +72,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="bg-slate-700 border-slate-600 text-white placeholder-gray-400 flex-grow"
               />
-              <Button className="bg-teal-600 hover:bg-teal-700 px-6">
+              <Button className="gradient-brand hover:gradient-brand-reverse px-6">
                 Subscribe
               </Button>
             </div>
@@ -86,9 +87,15 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
-              <MessageSquare className="h-8 w-8 text-teal-400 mr-2" />
+              <Image
+                src="/logo.png"
+                alt="TextHey Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8 mr-3"
+              />
               <div className="text-2xl font-bold">
-                Text<span className="text-teal-400">Hey</span>
+                Text<span className="gradient-brand-text">Hey</span>
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -96,13 +103,13 @@ const Footer = () => {
               Trusted by businesses worldwide to reduce no-shows and boost bookings.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-brand-cyan transition-colors duration-200">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-brand-pink transition-colors duration-200">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="mailto:go@texthey.com" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+              <a href="mailto:go@texthey.com" className="text-gray-400 hover:text-brand-cyan transition-colors duration-200">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -137,7 +144,7 @@ const Footer = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <div className="text-gray-400 text-sm">
                 Questions? Email{' '}
-                <a href="mailto:go@texthey.com" className="text-teal-400 hover:text-teal-300 underline">
+                <a href="mailto:go@texthey.com" className="text-brand-cyan hover:text-brand-pink underline">
                   go@texthey.com
                 </a>
               </div>
@@ -145,7 +152,7 @@ const Footer = () => {
                 <Button variant="outline" size="sm" className="border-slate-600 text-gray-300 hover:bg-slate-800">
                   Book a Demo
                 </Button>
-                <Button size="sm" className="bg-teal-600 hover:bg-teal-700">
+                <Button size="sm" className="gradient-brand hover:gradient-brand-reverse">
                   Start Free Trial
                 </Button>
               </div>

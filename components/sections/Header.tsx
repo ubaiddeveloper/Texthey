@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,9 +45,14 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="text-2xl font-bold text-slate-900">
-              Text<span className="text-teal-600">Hey</span>
-            </div>
+            <Image
+              src="/logo_with_text.png"
+              alt="TextHey Logo"
+              width={140}
+              height={40}
+              className="h-8 w-auto"
+              priority
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -64,10 +70,10 @@ const Header = () => {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-white">
               Sign In
             </Button>
-            <Button size="sm" className="bg-teal-600 hover:bg-teal-700">
+            <Button size="sm" className="gradient-brand hover:gradient-brand-reverse text-white">
               Start Free Trial
             </Button>
           </div>
@@ -104,12 +110,12 @@ const Header = () => {
                   Sign In
                 </button>
                 <div className="px-3 space-y-2">
-                  <Button variant="outline" size="sm" className="w-full">
+                  <Button variant="outline" size="sm" className="w-full border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-white">
                     Book a Demo
                   </Button>
                   <Button
                     size="sm"
-                    className="w-full bg-teal-600 hover:bg-teal-700"
+                    className="w-full gradient-brand hover:gradient-brand-reverse text-white"
                   >
                     Start Free Trial
                   </Button>

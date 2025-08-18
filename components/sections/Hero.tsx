@@ -156,7 +156,7 @@ const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50"
+      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-pink-50/30"
     >
       {/* Background Pattern */}
       <div className="hero-bg absolute inset-0 opacity-5">
@@ -168,17 +168,21 @@ const Hero = () => {
         />
       </div>
 
+      {/* Floating gradient orbs */}
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-brand-cyan/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-pink/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left">
             <h1
               ref={headlineRef}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
             >
-              <span className="whitespace-nowrap">Booking Appointments</span>
+              <span className="whitespace-nowrap text-slate-900">Booking Appointments</span>
               <br />
-              Just Got Texty
+              <span className="gradient-brand-text">Just Got Texty</span>
             </h1>
 
             <p className="hero-subtext text-xl text-gray-600 mb-8 leading-relaxed">
@@ -190,7 +194,7 @@ const Hero = () => {
             <div className="flex justify-center lg:justify-start mb-12">
               <Button
                 size="lg"
-                className="hero-cta bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold transition-all duration-200 hover:scale-105"
+                className="hero-cta gradient-brand hover:gradient-brand-animated text-white px-8 py-4 text-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
                 style={{ opacity: 1, transform: "translateY(0px)" }}
               >
                 Get Started Now
@@ -204,7 +208,7 @@ const Hero = () => {
             >
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start mb-2">
-                  <TrendingUp className="h-6 w-6 text-teal-600 mr-2" />
+                  <TrendingUp className="h-6 w-6 text-brand-cyan mr-2" />
                   <span
                     className="counter text-2xl font-bold text-slate-900"
                     data-target="30"
@@ -217,7 +221,7 @@ const Hero = () => {
               </div>
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start mb-2">
-                  <MessageSquare className="h-6 w-6 text-teal-600 mr-2" />
+                  <MessageSquare className="h-6 w-6 text-brand-pink mr-2" />
                   <span
                     className="counter text-2xl font-bold text-slate-900"
                     data-target="25"
@@ -230,7 +234,7 @@ const Hero = () => {
               </div>
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start mb-2">
-                  <Users className="h-6 w-6 text-teal-600 mr-2" />
+                  <Users className="h-6 w-6 text-brand-cyan mr-2" />
                   <span
                     className="counter text-2xl font-bold text-slate-900"
                     data-target="4.9"
@@ -271,7 +275,7 @@ const Hero = () => {
                   </div>
                   <div className="p-4 space-y-4 bg-gradient-to-b from-white to-gray-50 min-h-[400px]">
                     <div className="text-right">
-                      <div className="inline-block bg-blue-500 text-white px-4 py-2 rounded-2xl rounded-tr-md max-w-xs">
+                      <div className="inline-block bg-brand-cyan text-white px-4 py-2 rounded-2xl rounded-tr-md max-w-xs">
                         Book haircut
                       </div>
                       <div className="text-xs text-gray-500 mt-1">11:23 AM</div>
@@ -291,13 +295,13 @@ const Hero = () => {
                       <div className="text-xs text-gray-500 mt-1">11:24 AM</div>
                     </div>
                     <div className="text-right">
-                      <div className="inline-block bg-blue-500 text-white px-4 py-2 rounded-2xl rounded-tr-md max-w-xs">
+                      <div className="inline-block bg-brand-cyan text-white px-4 py-2 rounded-2xl rounded-tr-md max-w-xs">
                         3:30 PM with Mike
                       </div>
                       <div className="text-xs text-gray-500 mt-1">11:25 AM</div>
                     </div>
                     <div className="text-left">
-                      <div className="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-2xl rounded-tl-md max-w-xs">
+                      <div className="inline-block gradient-brand text-white px-4 py-2 rounded-2xl rounded-tl-md max-w-xs">
                         ✅ Booked! Your haircut with Mike is confirmed for today
                         at 3:30 PM. 💳 Pay now: bit.ly/pay-xyz
                       </div>
@@ -314,7 +318,7 @@ const Hero = () => {
                     <h3 className="font-semibold text-gray-900">
                       Today&apos;s Bookings
                     </h3>
-                    <div className="text-sm text-teal-600 font-medium">
+                    <div className="text-sm text-brand-cyan font-medium">
                       +12 new
                     </div>
                   </div>
@@ -337,7 +341,7 @@ const Hero = () => {
                           Color • 3:30 PM
                         </div>
                       </div>
-                      <div className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                      <div className="text-xs bg-brand-cyan/20 text-brand-cyan px-2 py-1 rounded">
                         Paid
                       </div>
                     </div>

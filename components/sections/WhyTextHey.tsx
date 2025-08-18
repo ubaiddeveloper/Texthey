@@ -73,7 +73,7 @@ const WhyTextHey = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Why Choose Text Hey?
+            Why Choose <span className="gradient-brand-text">Text Hey</span>?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Transform your booking process with the simplicity of text
@@ -91,13 +91,7 @@ const WhyTextHey = () => {
               {/* Animated Gradient Border */}
               <div className="absolute inset-0 rounded-2xl p-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
                 <div
-                  className="absolute inset-0 rounded-2xl"
-                  style={{
-                    background:
-                      "linear-gradient(45deg, #3b82f6, #8b5cf6, #14b8a6, #f59e0b, #ef4444, #3b82f6)",
-                    backgroundSize: "300% 300%",
-                    animation: "gradient-shine 4s ease infinite",
-                  }}
+                  className="absolute inset-0 rounded-2xl gradient-brand-animated"
                 ></div>
                 <div className="relative h-full w-full rounded-2xl bg-gradient-to-br from-slate-50 to-white"></div>
               </div>
@@ -106,8 +100,8 @@ const WhyTextHey = () => {
               <div className="absolute inset-0 rounded-2xl border border-gray-200 group-hover:border-transparent transition-colors duration-300"></div>
 
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-200 transition-colors duration-300">
-                  <benefit.icon className="h-8 w-8 text-teal-600" />
+                <div className="w-16 h-16 bg-white border-2 border-brand-cyan rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-cyan transition-colors duration-300">
+                  <benefit.icon className="h-8 w-8 text-brand-cyan group-hover:text-white" />
                 </div>
 
                 <h3 className="text-xl font-semibold text-slate-900 mb-3">
@@ -124,7 +118,7 @@ const WhyTextHey = () => {
                       key={featureIndex}
                       className="flex items-center text-sm text-gray-500"
                     >
-                      <div className="w-1.5 h-1.5 bg-teal-500 rounded-full mr-3 flex-shrink-0"></div>
+                      <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full mr-3 flex-shrink-0"></div>
                       {feature}
                     </li>
                   ))}
@@ -132,7 +126,7 @@ const WhyTextHey = () => {
               </div>
 
               {/* Hover Effect Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-50/0 to-teal-100/0 group-hover:from-teal-50/50 group-hover:to-teal-100/30 rounded-2xl transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/0 to-brand-pink/0 group-hover:from-brand-cyan/10 group-hover:to-brand-pink/10 rounded-2xl transition-all duration-300"></div>
             </div>
           ))}
         </div>
@@ -142,7 +136,7 @@ const WhyTextHey = () => {
           <p className="text-lg text-gray-600 mb-6">
             Ready to see it in action?
           </p>
-          <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl">
+          <button className="gradient-brand hover:gradient-brand-animated text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl">
             Start Free Trial
           </button>
         </div>

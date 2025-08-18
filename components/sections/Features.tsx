@@ -136,7 +136,7 @@ const Features = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Everything You Need to Grow
+            <span className="gradient-brand-text">Everything You Need</span> to Grow
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             From simple text bookings to advanced automation, Text Hey provides
@@ -149,10 +149,10 @@ const Features = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="feature-card group bg-gradient-to-br from-slate-50 to-white p-6 rounded-2xl border border-gray-200 hover:border-teal-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="feature-card group bg-gradient-to-br from-slate-50 to-white p-6 rounded-2xl border border-gray-200 hover:border-brand-cyan hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-teal-200 transition-colors duration-300">
-                <feature.icon className="h-6 w-6 text-teal-600" />
+              <div className="w-12 h-12 bg-white border-2 border-brand-cyan rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand-cyan transition-colors duration-300">
+                <feature.icon className="h-6 w-6 text-brand-cyan group-hover:text-white" />
               </div>
 
               <h3 className="text-lg font-semibold text-slate-900 mb-3">
@@ -169,7 +169,7 @@ const Features = () => {
                     key={benefitIndex}
                     className="flex items-center text-xs text-gray-500"
                   >
-                    <div className="w-1 h-1 bg-teal-500 rounded-full mr-2 flex-shrink-0"></div>
+                    <div className="w-1 h-1 bg-brand-cyan rounded-full mr-2 flex-shrink-0"></div>
                     {benefit}
                   </li>
                 ))}
@@ -179,7 +179,7 @@ const Features = () => {
         </div>
 
         {/* Feature Highlight */}
-        <div className="mt-20 bg-gradient-to-r from-teal-50 to-blue-50 rounded-3xl p-8 lg:p-12">
+        <div className="mt-20 bg-gradient-to-r from-brand-cyan/10 to-brand-pink/10 rounded-3xl p-8 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
@@ -189,36 +189,36 @@ const Features = () => {
                 Whether you run a nationwide franchise or operate multiple
                 branches, Text Hey gives you the power to manage all locations
                 from one central dashboard. Keep every site in sync while still
-                tailoring bookings, promotions, and operations to each branch's
+                tailoring bookings, promotions, and operations to each branch&apos;s
                 unique needs.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-brand-cyan rounded-full mr-3"></div>
                   <span className="text-gray-700">
                     Centralized dashboard for all locations
                   </span>
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-brand-cyan rounded-full mr-3"></div>
                   <span className="text-gray-700">
                     Branch-level booking and campaign controls
                   </span>
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-brand-cyan rounded-full mr-3"></div>
                   <span className="text-gray-700">
                     Performance tracking per location
                   </span>
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-brand-cyan rounded-full mr-3"></div>
                   <span className="text-gray-700">
                     Role-based access for managers and staff
                   </span>
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-brand-cyan rounded-full mr-3"></div>
                   <span className="text-gray-700">
                     Consistent branding across every branch
                   </span>
@@ -231,7 +231,7 @@ const Features = () => {
                   <h4 className="font-semibold text-slate-900">
                     Global Dashboard
                   </h4>
-                  <div className="text-sm text-teal-600 font-medium">Live</div>
+                  <div className="text-sm text-brand-cyan font-medium">Live</div>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between py-2 border-b border-gray-100">

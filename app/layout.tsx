@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   creator: 'Text Hey',
   publisher: 'Text Hey',
   metadataBase: new URL('https://texthey.com'),
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

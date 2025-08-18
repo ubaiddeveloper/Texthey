@@ -30,18 +30,32 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen">
       <Header />
-      <Hero />
-      <WhyTextHey />
-      <HowItWorks />
-      <Features />
-      <Industries />
-      <SocialProof />
+      <div className="bg-white">
+        <Hero />
+      </div>
+      <div className="bg-section-light">
+        <WhyTextHey />
+      </div>
+      <div className="bg-white">
+        <HowItWorks />
+      </div>
+      <div className="bg-section-dark">
+        <Features />
+      </div>
+      <div className="bg-white">
+        <Industries />
+      </div>
+      <div className="bg-section-light">
+        <SocialProof />
+      </div>
       {/* <ValueStats /> */}
       {/* <CTABanner /> */}
       {/* <PricingTeaser /> */}
-      <Footer />
+      <div className="bg-slate-900">
+        <Footer />
+      </div>
     </main>
   );
 }
