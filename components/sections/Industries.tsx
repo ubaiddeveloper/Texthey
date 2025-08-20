@@ -1,7 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Scissors, Sparkles, Heart, PawPrint, Car, Smile } from "lucide-react";
+import {
+  Scissors,
+  Paintbrush,
+  Heart,
+  PawPrint,
+  Car,
+  Smile,
+  Stethoscope,
+  Sparkles,
+} from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -38,7 +47,7 @@ const Industries = () => {
   const industries = [
     {
       icon: Scissors,
-      title: "💇‍♀️ Hair Salons & Barbers",
+      title: "Hair Salons & Barbers",
       description:
         "Perfect for hairstylists, barbershops, and grooming studios.",
       features: [
@@ -46,12 +55,12 @@ const Industries = () => {
         "Stylist selection",
         "Color or style consultation scheduling",
       ],
-      color: "from-pink-500 to-rose-500",
+      color: "from-brand-pink to-brand-pink",
       bgGradient: "from-pink-50 to-rose-50",
     },
     {
       icon: Sparkles,
-      title: "💅 Nail Technicians & Spas",
+      title: " Nail Technicians & Spas",
       description:
         "Ideal for nail salons, beauty spas, and massage therapy centers.",
       features: [
@@ -59,12 +68,12 @@ const Industries = () => {
         "Package deals",
         "Session duration tracking",
       ],
-      color: "from-purple-500 to-indigo-500",
+      color: "from-brand-pink to-brand-pink",
       bgGradient: "from-purple-50 to-indigo-50",
     },
     {
       icon: PawPrint,
-      title: "🐾 Pet Groomers & Dog Walkers",
+      title: "Pet Groomers & Dog Walkers",
       description:
         "Tailored for pet grooming services, walkers, and veterinary clinics.",
       features: [
@@ -76,8 +85,21 @@ const Industries = () => {
       bgGradient: "from-orange-50 to-amber-50",
     },
     {
+      icon: Stethoscope,
+      title: "Dental & Healthcare Clinics",
+      description:
+        "Great for dentists, chiropractors, physiotherapists, and healthcare practices.",
+      features: [
+        "Appointment reminders to reduce no-shows",
+        "Easy rescheduling and cancellations",
+        "Post-visit follow-up requests",
+      ],
+      color: "from-brand-cyan to-brand-cyan",
+      bgGradient: "from-blue-50 to-cyan-50",
+    },
+    {
       icon: Heart,
-      title: "💼 Estheticians, Coaches, Therapists & More",
+      title: "Estheticians, Coaches, and Therapists",
       description:
         "Flexible for wellness, education, and professional service providers.",
       features: [
@@ -85,7 +107,7 @@ const Industries = () => {
         "Flexible scheduling",
         "Client follow-up requests",
       ],
-      color: "from-teal-500 to-cyan-500",
+      color: "from-brand-cyan to-brand-cyan",
       bgGradient: "from-teal-50 to-cyan-50",
     },
     {
@@ -111,7 +133,7 @@ const Industries = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            See Industry Details
+            Tailored for <span className="gradient-brand-text">You</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover how Text Hey adapts to your unique workflow and drives
@@ -187,9 +209,10 @@ const Industries = () => {
               </div>
 
               <blockquote className="text-lg text-gray-700 italic mb-6 leading-relaxed">
-                "Text Hey transformed our booking process completely. Our
-                no-show rate dropped by 35% and we're seeing 40% more repeat
-                customers. The best part? Our clients love how easy it is."
+                &quot;Text Hey transformed our booking process completely. Our
+                no-show rate dropped by 35% and we&apos;re seeing 40% more
+                repeat customers. The best part? Our clients love how easy it
+                is.&quot;
               </blockquote>
 
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gray-200">

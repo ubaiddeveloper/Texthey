@@ -7,7 +7,7 @@ import {
   Bell,
   Globe,
   Gift,
-  Calendar,
+  MessageCircle,
   Users,
   BarChart3,
 } from "lucide-react";
@@ -67,7 +67,7 @@ const Features = () => {
     },
     {
       icon: Zap,
-      title: "1-Click Suggested Bookings",
+      title: "Suggested Bookings",
       description:
         "Recover lost revenue and encourage repeat visits effortlessly.",
       benefits: [
@@ -98,7 +98,7 @@ const Features = () => {
       ],
     },
     {
-      icon: Calendar,
+      icon: MessageCircle,
       title: "Follow-up Reviews",
       description:
         "Build trust and attract more clients with post-service feedback requests.",
@@ -136,7 +136,8 @@ const Features = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            <span className="gradient-brand-text">Everything You Need</span> to Grow
+            Everything You Need to{" "}
+            <span className="gradient-brand-text">Grow</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             From simple text bookings to advanced automation, Text Hey provides
@@ -189,8 +190,8 @@ const Features = () => {
                 Whether you run a nationwide franchise or operate multiple
                 branches, Text Hey gives you the power to manage all locations
                 from one central dashboard. Keep every site in sync while still
-                tailoring bookings, promotions, and operations to each branch&apos;s
-                unique needs.
+                tailoring bookings, promotions, and operations to each
+                branch&apos;s unique needs.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center">
@@ -231,7 +232,9 @@ const Features = () => {
                   <h4 className="font-semibold text-slate-900">
                     Global Dashboard
                   </h4>
-                  <div className="text-sm text-brand-cyan font-medium">Live</div>
+                  <div className="text-sm text-brand-cyan font-medium">
+                    Live
+                  </div>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between py-2 border-b border-gray-100">
@@ -240,9 +243,7 @@ const Features = () => {
                         <span className="text-xs">🇺🇸</span>
                       </div>
                       <div>
-                        <div className="text-sm font-medium">
-                          New York Salon
-                        </div>
+                        <div className="text-sm font-medium">New York</div>
                         <div className="text-xs text-gray-500">
                           12 bookings today
                         </div>
@@ -255,33 +256,33 @@ const Features = () => {
                   <div className="flex items-center justify-between py-2 border-b border-gray-100">
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-xs">🇬🇧</span>
+                        <span className="text-xs">��</span>
                       </div>
                       <div>
-                        <div className="text-sm font-medium">London Spa</div>
+                        <div className="text-sm font-medium">Los Angeles</div>
                         <div className="text-xs text-gray-500">
                           8 bookings today
                         </div>
                       </div>
                     </div>
                     <div className="text-sm font-medium text-green-600">
-                      £890
+                      $890
                     </div>
                   </div>
                   <div className="flex items-center justify-between py-2">
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-xs">🇦🇺</span>
+                        <span className="text-xs">🇺🇸</span>
                       </div>
                       <div>
-                        <div className="text-sm font-medium">Sydney Mobile</div>
+                        <div className="text-sm font-medium">Dallas</div>
                         <div className="text-xs text-gray-500">
                           15 bookings today
                         </div>
                       </div>
                     </div>
                     <div className="text-sm font-medium text-green-600">
-                      A$1,680
+                      $1,680
                     </div>
                   </div>
                 </div>
