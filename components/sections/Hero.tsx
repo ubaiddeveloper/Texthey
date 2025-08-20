@@ -268,7 +268,7 @@ const Hero = () => {
           <div ref={deviceRef} className="relative flex justify-end">
             <div className="relative max-w-md scale-100">
               {/* Dashboard Mockup - Background - Now positioned to the left */}
-              <div className="absolute -top-4 -left-60 w-64 h-48 bg-white/20 backdrop-blur-md rounded-xl shadow-2xl border border-white/30 transform -rotate-12 z-30 overflow-hidden">
+              <div className="absolute top-40 -left-80 w-64 h-48 bg-white/20 backdrop-blur-md rounded-xl shadow-2xl border border-white/30 transform -rotate-12 z-30 overflow-hidden">
                 <div className="p-4">
                   {/* Dashboard Header */}
                   <div className="flex items-center justify-between mb-3">
