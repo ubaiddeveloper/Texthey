@@ -70,10 +70,17 @@ const Header = () => {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-white">
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white"
+            >
               Sign In
             </Button>
-            <Button size="sm" className="gradient-brand hover:gradient-brand-reverse text-white">
+            <Button
+              size="sm"
+              className="bg-brand-cyan hover:bg-brand-cyan/90 text-white"
+            >
               Start Free Trial
             </Button>
           </div>
@@ -110,12 +117,16 @@ const Header = () => {
                   Sign In
                 </button>
                 <div className="px-3 space-y-2">
-                  <Button variant="outline" size="sm" className="w-full border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-white">
-                    Book a Demo
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white"
+                  >
+                    Sign In
                   </Button>
                   <Button
                     size="sm"
-                    className="w-full gradient-brand hover:gradient-brand-reverse text-white"
+                    className="w-full bg-brand-cyan hover:bg-brand-cyan/90 text-white"
                   >
                     Start Free Trial
                   </Button>

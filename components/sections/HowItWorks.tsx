@@ -59,28 +59,28 @@ const HowItWorks = () => {
       title: 'Text "Hey"',
       description:
         'Kickstart the booking instantly—just send "Hey" to a business number.',
-      color: "from-blue-500 to-blue-600",
+      color: "from-brand-cyan to-brand-cyan",
     },
     {
       icon: ArrowDown,
       title: "Choose & Confirm",
       description:
         "Pick your service, date, time, and staff in a few quick replies.",
-      color: "from-purple-500 to-purple-600",
+      color: "from-brand-pink to-brand-pink",
     },
     {
       icon: CheckCircle,
       title: "Get Reminded",
       description:
         "Stay on track with instant confirmations and timely reminders.",
-      color: "from-teal-500 to-teal-600",
+      color: "from-brand-cyan to-brand-cyan",
     },
     {
       icon: RotateCcw,
       title: "Share & Rebook",
       description:
         "Receive a follow-up to leave a review or book your next visit.",
-      color: "from-green-500 to-green-600",
+      color: "from-brand-pink to-brand-pink",
     },
   ];
 
@@ -93,7 +93,7 @@ const HowItWorks = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            How It Works
+            How It <span className="gradient-brand-text">Works</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Four simple steps to transform your booking process. Your clients
@@ -133,23 +133,46 @@ const HowItWorks = () => {
 
           {/* Phone Animation */}
           <div ref={phoneRef} className="relative">
-            <div className="bg-slate-900 rounded-[2.5rem] p-4 shadow-2xl max-w-sm mx-auto">
+            <div className="bg-slate-900 rounded-[2.5rem] p-2 shadow-2xl max-w-sm mx-auto transform rotate-3 hover:rotate-0 transition-transform duration-500">
+              {/* iPhone Notch */}
+              <div className="bg-slate-900 h-6 rounded-t-[2.2rem] relative">
+                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-slate-800 rounded-full"></div>
+              </div>
               <div className="bg-white rounded-[2rem] overflow-hidden">
-                <div className="bg-gray-100 px-4 py-3 text-center">
-                  <div className="text-sm font-medium text-gray-600">
-                    Messages
+                {/* Status Bar */}
+                <div className="bg-white px-6 py-2 flex items-center justify-between text-sm">
+                  <div className="font-semibold">9:41</div>
+                  <div className="flex items-center space-x-1">
+                    <div className="w-4 h-2 border border-black rounded-sm">
+                      <div className="w-3 h-1 bg-black rounded-sm m-0.5"></div>
+                    </div>
                   </div>
                 </div>
-                <div className="p-4 space-y-4 bg-white min-h-[500px]">
+                {/* Message Header */}
+                <div className="bg-gray-50 px-4 py-3 flex items-center justify-between border-b border-gray-200">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-brand-cyan rounded-full flex items-center justify-center">
+                      <MessageCircle className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-gray-900">
+                        TextHey SMS
+                      </div>
+                      <div className="text-xs text-gray-500">Online</div>
+                    </div>
+                  </div>
+                </div>
+                {/* Messages */}
+                <div className="p-4 space-y-3 bg-white min-h-[500px]">
                   <div className="message text-right">
-                    <div className="inline-block bg-blue-500 text-white px-4 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
+                    <div className="inline-block bg-brand-cyan text-white px-3 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
                       BOOK
                     </div>
                     <div className="text-xs text-gray-500 mt-1">2:30 PM</div>
                   </div>
 
                   <div className="message text-left">
-                    <div className="inline-block bg-gray-200 text-gray-900 px-4 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
+                    <div className="inline-block bg-gray-100 text-gray-900 px-3 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
                       Hey! 👋 What service would you like to book? 1. Haircut
                       ($45) 2. Color ($85) 3. Massage ($60) Reply with a number!
                     </div>
@@ -157,14 +180,14 @@ const HowItWorks = () => {
                   </div>
 
                   <div className="message text-right">
-                    <div className="inline-block bg-blue-500 text-white px-4 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
+                    <div className="inline-block bg-brand-cyan text-white px-3 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
                       1
                     </div>
                     <div className="text-xs text-gray-500 mt-1">2:31 PM</div>
                   </div>
 
                   <div className="message text-left">
-                    <div className="inline-block bg-gray-200 text-gray-900 px-4 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
+                    <div className="inline-block bg-gray-100 text-gray-900 px-3 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
                       Perfect! Here are available times for a haircut: 📅
                       Tomorrow: • 10:00 AM - Sarah • 2:00 PM - Mike • 4:30 PM -
                       Sarah Pick one!
@@ -173,20 +196,24 @@ const HowItWorks = () => {
                   </div>
 
                   <div className="message text-right">
-                    <div className="inline-block bg-blue-500 text-white px-4 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
+                    <div className="inline-block bg-brand-cyan text-white px-3 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
                       2:00 PM - Mike
                     </div>
                     <div className="text-xs text-gray-500 mt-1">2:32 PM</div>
                   </div>
 
                   <div className="message text-left">
-                    <div className="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
+                    <div className="inline-block bg-brand-pink text-white px-3 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
                       ✅ Booked! Haircut with Mike Tomorrow at 2:00 PM 💳 Pay
-                      now: bit.ly/pay-th123 You'll get a reminder 2 hours
+                      now: bit.ly/pay-th123 You&apos;ll get a reminder 2 hours
                       before!
                     </div>
                     <div className="text-xs text-gray-500 mt-1">2:32 PM</div>
                   </div>
+                </div>
+                {/* iPhone Home Indicator */}
+                <div className="bg-white px-4 py-2 flex justify-center">
+                  <div className="w-32 h-1 bg-gray-300 rounded-full"></div>
                 </div>
               </div>
             </div>
@@ -197,17 +224,19 @@ const HowItWorks = () => {
         <div className="mt-20 text-center">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div>
-              <div className="text-3xl font-bold text-teal-600 mb-2">
+              <div className="text-3xl font-bold text-brand-cyan mb-2">
                 30 sec
               </div>
               <div className="text-sm text-gray-600">Average booking time</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-teal-600 mb-2">98%</div>
+              <div className="text-3xl font-bold text-brand-pink mb-2">98%</div>
               <div className="text-sm text-gray-600">Completion rate</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-teal-600 mb-2">24/7</div>
+              <div className="text-3xl font-bold text-brand-cyan mb-2">
+                24/7
+              </div>
               <div className="text-sm text-gray-600">Always available</div>
             </div>
           </div>

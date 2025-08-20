@@ -90,9 +90,7 @@ const WhyTextHey = () => {
             >
               {/* Animated Gradient Border */}
               <div className="absolute inset-0 rounded-2xl p-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
-                <div
-                  className="absolute inset-0 rounded-2xl gradient-brand-animated"
-                ></div>
+                <div className="absolute inset-0 rounded-2xl gradient-brand-animated"></div>
                 <div className="relative h-full w-full rounded-2xl bg-gradient-to-br from-slate-50 to-white"></div>
               </div>
 
@@ -136,7 +134,7 @@ const WhyTextHey = () => {
           <p className="text-lg text-gray-600 mb-6">
             Ready to see it in action?
           </p>
-          <button className="gradient-brand hover:gradient-brand-animated text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl">
+          <button className="border-2 border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl">
             Start Free Trial
           </button>
         </div>
