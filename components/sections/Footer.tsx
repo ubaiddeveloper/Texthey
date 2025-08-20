@@ -1,78 +1,75 @@
-'use client';
+"use client";
 
-import { MessageSquare, Twitter, Linkedin, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import Image from 'next/image';
+import { MessageSquare, Twitter, Linkedin, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 const Footer = () => {
   const footerSections = [
     {
-      title: 'Product',
+      title: "Product",
       links: [
-        { name: 'Features', href: '#features' },
-        { name: 'How It Works', href: '#how-it-works' },
-        { name: 'Pricing', href: '#pricing' },
-        { name: 'Integrations', href: '#' },
-        { name: 'API', href: '#' },
-      ]
+        { name: "Features", href: "#features" },
+        { name: "How It Works", href: "#how-it-works" },
+        { name: "Industries", href: "#for-your-business" },
+      ],
     },
     {
-      title: 'Industries',
+      title: "Industries",
       links: [
-        { name: 'Salons & Barbers', href: '#for-your-business' },
-        { name: 'Spas & Wellness', href: '#for-your-business' },
-        { name: 'Nail Technicians', href: '#for-your-business' },
-        { name: 'Pet Grooming', href: '#for-your-business' },
-        { name: 'Mobile Services', href: '#for-your-business' },
-      ]
+        { name: "Hair Salons & Barbers", href: "#for-your-business" },
+        { name: "Nail Technicians & Spas", href: "#for-your-business" },
+        { name: "Pet Groomers & Dog Walkers", href: "#for-your-business" },
+        { name: "Dental & Healthcare Clinics", href: "#for-your-business" },
+        {
+          name: "Estheticians, Coaches, and Therapists",
+          href: "#for-your-business",
+        },
+      ],
     },
     {
-      title: 'Company',
+      title: "Company",
       links: [
-        { name: 'About', href: '#about' },
-        { name: 'Blog', href: '#blog' },
-        { name: 'Careers', href: '#' },
-        { name: 'Contact', href: '#contact' },
-        { name: 'Press', href: '#' },
-      ]
+        { name: "Home", href: "#home" },
+        { name: "Testimonials", href: "#testimonials" },
+      ],
     },
     {
-      title: 'Support',
+      title: "Support",
       links: [
-        { name: 'Help Center', href: '#' },
-        { name: 'Getting Started', href: '#' },
-        { name: 'Status', href: '#' },
-        { name: 'Privacy Policy', href: '#' },
-        { name: 'Terms of Service', href: '#' },
-      ]
+        { name: "Contact Us", href: "mailto:go@texthey.com" },
+        { name: "Privacy Policy", href: "#" },
+        { name: "Terms of Service", href: "#" },
+      ],
     },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="text-white" style={{ backgroundColor: "#101443" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Newsletter Section */}
-        <div className="bg-slate-800 rounded-2xl p-8 mb-16">
+        {/* <div className="bg-slate-900 rounded-2xl p-8 mb-16">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
             <p className="text-gray-300 mb-6">
-              Get the latest tips, features, and industry insights delivered to your inbox.
+              Get the latest tips, features, and industry insights delivered to
+              your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-slate-700 border-slate-600 text-white placeholder-gray-400 flex-grow"
+                className="bg-slate-800 border-slate-700 text-white placeholder-gray-400 flex-grow"
               />
-              <Button className="gradient-brand hover:gradient-brand-reverse px-6">
+              <Button className="bg-brand-cyan hover:bg-brand-cyan/90 text-white px-6">
                 Subscribe
               </Button>
             </div>
@@ -80,7 +77,7 @@ const Footer = () => {
               Unsubscribe at any time. We respect your privacy.
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
@@ -99,17 +96,27 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Transform your appointment booking process with the simplicity of text messaging. 
-              Trusted by businesses worldwide to reduce no-shows and boost bookings.
+              Transform your appointment booking process with the simplicity of
+              text messaging. Trusted by businesses worldwide to reduce no-shows
+              and boost bookings.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-brand-cyan transition-colors duration-200">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-brand-cyan transition-colors duration-200"
+              >
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-brand-pink transition-colors duration-200">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-brand-pink transition-colors duration-200"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="mailto:go@texthey.com" className="text-gray-400 hover:text-brand-cyan transition-colors duration-200">
+              <a
+                href="mailto:go@texthey.com"
+                className="text-gray-400 hover:text-brand-cyan transition-colors duration-200"
+              >
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -124,7 +131,7 @@ const Footer = () => {
                   <li key={linkIndex}>
                     <button
                       onClick={() => scrollToSection(link.href)}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                      className="text-gray-400 hover:text-white transition-colors duration-200 text-sm text-left w-full"
                     >
                       {link.name}
                     </button>
@@ -136,23 +143,33 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-slate-800 mt-16 pt-8">
+        <div className="border-t border-slate-900 mt-16 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Text Hey. All rights reserved.
+              © 2025 Text Hey. All rights reserved.
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <div className="text-gray-400 text-sm">
-                Questions? Email{' '}
-                <a href="mailto:go@texthey.com" className="text-brand-cyan hover:text-brand-pink underline">
+                Questions? Email{" "}
+                <a
+                  href="mailto:go@texthey.com"
+                  className="text-brand-cyan hover:text-brand-pink underline"
+                >
                   go@texthey.com
                 </a>
               </div>
               <div className="flex gap-4">
-                <Button variant="outline" size="sm" className="border-slate-600 text-gray-300 hover:bg-slate-800">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-slate-700 text-gray-300 hover:bg-slate-800 hover:text-white"
+                >
                   Book a Demo
                 </Button>
-                <Button size="sm" className="gradient-brand hover:gradient-brand-reverse">
+                <Button
+                  size="sm"
+                  className="bg-brand-cyan hover:bg-brand-cyan/90 text-white"
+                >
                   Start Free Trial
                 </Button>
               </div>

@@ -141,11 +141,11 @@ const Industries = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className={`industry-card group relative bg-gradient-to-br ${industry.bgGradient} rounded-3xl p-8 border border-gray-200 hover:border-gray-300 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden`}
+              className={`industry-card group relative bg-gradient-to-br ${industry.bgGradient} rounded-3xl p-8 border border-gray-200 hover:border-gray-300 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full`}
             >
               <div className="relative z-10">
                 <div
@@ -192,19 +192,12 @@ const Industries = () => {
         <div className="mt-20 bg-white rounded-3xl shadow-xl p-8 lg:p-12 border border-gray-200">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="flex items-center mb-6">
-                <img
-                  src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face"
-                  alt="Sarah Johnson"
-                  className="w-16 h-16 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <div className="font-semibold text-slate-900">
-                    Sarah Johnson
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Owner, Luxe Hair Studio
-                  </div>
+              <div className="mb-6">
+                <div className="font-semibold text-slate-900">
+                  Sarah Johnson
+                </div>
+                <div className="text-sm text-gray-600">
+                  Owner, Luxe Hair Studio
                 </div>
               </div>
 
@@ -217,17 +210,17 @@ const Industries = () => {
 
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gray-200">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-teal-600">35%</div>
+                  <div className="text-2xl font-bold text-brand-cyan">35%</div>
                   <div className="text-sm text-gray-600">Fewer no-shows</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-teal-600">40%</div>
+                  <div className="text-2xl font-bold text-brand-cyan">40%</div>
                   <div className="text-sm text-gray-600">
                     More repeat customers
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-teal-600">50%</div>
+                  <div className="text-2xl font-bold text-brand-cyan">50%</div>
                   <div className="text-sm text-gray-600">Time saved daily</div>
                 </div>
               </div>
@@ -256,7 +249,7 @@ const Industries = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Time Saved</span>
-                    <span className="font-semibold text-teal-600">
+                    <span className="font-semibold text-brand-cyan">
                       15 hrs/week
                     </span>
                   </div>
