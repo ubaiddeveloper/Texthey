@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Play,
@@ -12,11 +12,137 @@ import {
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+// Define the conversation flow outside component to avoid dependency issues
+const conversationFlow = [
+  { text: "Hi", isUser: true, timestamp: "2:15 PM" },
+  {
+    text: "Hi John, welcome to TextHey!\n\nPlease choose a service from the list below to get started.\n1. Haircut\n2. Shave\n3. Haircut & Shave",
+    isUser: false,
+    timestamp: "2:15 PM",
+  },
+  { text: "3", isUser: true, timestamp: "2:16 PM" },
+  {
+    text: "Great! Who would you like to book with?\n1. John D.\n2. Sarah J.\n3. James S.\n4. No Preference",
+    isUser: false,
+    timestamp: "2:16 PM",
+  },
+  { text: "2", isUser: true, timestamp: "2:17 PM" },
+  {
+    text: "Perfect! Please choose a date for your appointment.\n1. Mon, August 11\n2. Tue, August 12\n3. Wed, August 13\n4. Go back",
+    isUser: false,
+    timestamp: "2:17 PM",
+  },
+  { text: "1", isUser: true, timestamp: "2:18 PM" },
+  {
+    text: "Almost done. Please select a time that works best for you.\n1. 11:00 am\n2. 4:00 pm\n3. 9:30 pm\n4. Go back",
+    isUser: false,
+    timestamp: "2:18 PM",
+  },
+  { text: "2", isUser: true, timestamp: "2:19 PM" },
+  {
+    text: "🎉 Perfect! Your Haircut & Shave appointment with Sarah J. is confirmed for Monday, August 11 at 4:00 PM.\n\nTotal: $45\nPay now: pay.texthey.com/book-123",
+    isUser: false,
+    timestamp: "2:19 PM",
+  },
+  { text: "Thank you!", isUser: true, timestamp: "2:20 PM" },
+  {
+    text: "You're welcome! We'll send you a reminder before your appointment. See you soon! 😊",
+    isUser: false,
+    timestamp: "2:20 PM",
+  },
+];
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const deviceRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  const [messages, setMessages] = useState<
+    Array<{
+      id: number;
+      text: string;
+      isUser: boolean;
+      timestamp: string;
+    }>
+  >([]);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  // Auto-scroll to bottom when new messages are added
+  const scrollToBottom = () => {
+    if (messagesContainerRef.current) {
+      const container = messagesContainerRef.current;
+      gsap.to(container, {
+        scrollTop: container.scrollHeight,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  // Animate message appearance
+  const animateNewMessage = (messageElement: HTMLElement) => {
+    gsap.fromTo(
+      messageElement,
+      {
+        opacity: 0,
+        y: 20,
+        scale: 0.95,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      }
+    );
+  };
+
+  // Add messages with delay
+  useEffect(() => {
+    if (currentMessageIndex < conversationFlow.length) {
+      const timer = setTimeout(
+        () => {
+          const newMessage = {
+            id: currentMessageIndex,
+            ...conversationFlow[currentMessageIndex],
+          };
+
+          setMessages((prev) => [...prev, newMessage]);
+          setCurrentMessageIndex((prev) => prev + 1);
+
+          // Scroll to bottom after message is added
+          setTimeout(scrollToBottom, 100);
+        },
+        currentMessageIndex === 0 ? 1500 : 1800
+      ); // First message after 1.5s, then every 1.8s
+
+      return () => clearTimeout(timer);
+    } else {
+      // Reset conversation after it completes
+      const resetTimer = setTimeout(() => {
+        setMessages([]);
+        setCurrentMessageIndex(0);
+      }, 3000); // Reset after 3 seconds
+
+      return () => clearTimeout(resetTimer);
+    }
+  }, [currentMessageIndex]);
+
+  // Animate messages when they appear
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessageElement = document.querySelector(
+        `[data-message-id="${messages[messages.length - 1].id}"]`
+      ) as HTMLElement;
+
+      if (lastMessageElement) {
+        animateNewMessage(lastMessageElement);
+      }
+    }
+  }, [messages]);
 
   useLayoutEffect(() => {
     if (typeof window !== "undefined") {
@@ -354,57 +480,50 @@ const Hero = () => {
                       </div>
                       <div>
                         <div className="text-sm font-medium text-gray-900">
-                          TextHey SMS
+                          (123) 456-7890
                         </div>
-                        <div className="text-xs text-gray-500">Online</div>
                       </div>
                     </div>
                   </div>
                   {/* Messages */}
-                  <div className="p-3 space-y-2 bg-white h-96">
-                    <div className="text-right">
-                      <div className="inline-block bg-brand-cyan text-white px-2 py-1.5 rounded-2xl rounded-tr-md max-w-[160px] text-xs">
-                        Book haircut
+                  <div
+                    ref={messagesContainerRef}
+                    className="p-3 space-y-2 bg-white h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+                  >
+                    {messages.length === 0 && (
+                      <div className="flex items-center justify-center h-full">
+                        <div className="text-gray-400 text-sm">
+                          Starting conversation...
+                        </div>
                       </div>
-                      <div className="text-xs text-gray-500 mt-0.5">
-                        11:23 AM
+                    )}
+                    {messages.map((message) => (
+                      <div
+                        key={message.id}
+                        data-message-id={message.id}
+                        className={`text-${message.isUser ? "right" : "left"}`}
+                      >
+                        <div
+                          className={`inline-block px-3 py-2 rounded-2xl max-w-[180px] text-xs leading-relaxed ${
+                            message.isUser
+                              ? "bg-brand-cyan text-white rounded-tr-md"
+                              : "bg-gray-100 text-gray-900 rounded-tl-md"
+                          }`}
+                        >
+                          {message.text.split("\n").map((line, index) => (
+                            <div key={index}>
+                              {line}
+                              {index < message.text.split("\n").length - 1 && (
+                                <br />
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          {message.timestamp}
+                        </div>
                       </div>
-                    </div>
-                    <div className="text-left">
-                      <div className="inline-block bg-gray-100 text-gray-900 px-2 py-1.5 rounded-2xl rounded-tl-md max-w-[160px] text-xs">
-                        Hi! I&apos;d love to help you book an appointment. What
-                        service are you interested in?
-                      </div>
-                      <div className="text-xs text-gray-500 mt-0.5">
-                        11:23 AM
-                      </div>
-                    </div>
-                    <div className="text-left">
-                      <div className="inline-block bg-gray-100 text-gray-900 px-2 py-1.5 rounded-2xl rounded-tl-md max-w-[160px] text-xs">
-                        📅 Available times today: • 2:00 PM - Sarah • 3:30 PM -
-                        Mike • 5:00 PM - Sarah Reply with a time!
-                      </div>
-                      <div className="text-xs text-gray-500 mt-0.5">
-                        11:24 AM
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="inline-block bg-brand-cyan text-white px-2 py-1.5 rounded-2xl rounded-tr-md max-w-[160px] text-xs">
-                        3:30 PM with Mike
-                      </div>
-                      <div className="text-xs text-gray-500 mt-0.5">
-                        11:25 AM
-                      </div>
-                    </div>
-                    <div className="text-left">
-                      <div className="inline-block gradient-brand text-white px-2 py-1.5 rounded-2xl rounded-tl-md max-w-[160px] text-xs">
-                        ✅ Booked! Your haircut with Mike is confirmed for today
-                        at 3:30 PM. 💳 Pay now: bit.ly/pay-xyz
-                      </div>
-                      <div className="text-xs text-gray-500 mt-0.5">
-                        11:25 AM
-                      </div>
-                    </div>
+                    ))}
                   </div>
                   {/* iPhone Home Indicator */}
                   <div className="bg-white px-4 py-2 flex justify-center">
