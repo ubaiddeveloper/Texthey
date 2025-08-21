@@ -156,9 +156,8 @@ const HowItWorks = () => {
                     </div>
                     <div>
                       <div className="text-sm font-medium text-gray-900">
-                        TextHey SMS
+                        (123) 456-7890
                       </div>
-                      <div className="text-xs text-gray-500">Online</div>
                     </div>
                   </div>
                 </div>
