@@ -14,7 +14,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // Define the conversation flow outside component to avoid dependency issues
 const conversationFlow = [
-  { text: "Hi", isUser: true, timestamp: "2:15 PM" },
+  { text: "Hey", isUser: true, timestamp: "2:15 PM" },
   {
     text: "Hi John, welcome to TextHey!\n\nPlease choose a service from the list below to get started.\n1. Haircut\n2. Shave\n3. Haircut & Shave",
     isUser: false,
@@ -40,13 +40,7 @@ const conversationFlow = [
   },
   { text: "2", isUser: true, timestamp: "2:19 PM" },
   {
-    text: "🎉 Perfect! Your Haircut & Shave appointment with Sarah J. is confirmed for Monday, August 11 at 4:00 PM.\n\nTotal: $45\nPay now: pay.texthey.com/book-123",
-    isUser: false,
-    timestamp: "2:19 PM",
-  },
-  { text: "Thank you!", isUser: true, timestamp: "2:20 PM" },
-  {
-    text: "You're welcome! We'll send you a reminder before your appointment. See you soon! 😊",
+    text: "Your appointment is confirmed, and details are as follows.\n\nTexthey Salon\nHaircut & Shave\nMonday, August 11\n4:00 PM\n\nText 'Change' to this number if you'd like to adjust your booking.\n\nThanks for using Text Hey 😊",
     isUser: false,
     timestamp: "2:20 PM",
   },
@@ -120,15 +114,8 @@ const Hero = () => {
       ); // First message after 1.5s, then every 1.8s
 
       return () => clearTimeout(timer);
-    } else {
-      // Reset conversation after it completes
-      const resetTimer = setTimeout(() => {
-        setMessages([]);
-        setCurrentMessageIndex(0);
-      }, 3000); // Reset after 3 seconds
-
-      return () => clearTimeout(resetTimer);
     }
+    // Removed the reset functionality - animation stops at the last message
   }, [currentMessageIndex]);
 
   // Animate messages when they appear
@@ -342,7 +329,7 @@ const Hero = () => {
             >
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start mb-2">
-                  <TrendingDown className="h-6 w-6 text-brand-cyan mr-2" />
+                  <TrendingDown className="h-6 w-6 text-[#FFC003] mr-2" />
                   <span
                     className="counter text-2xl font-bold text-slate-900"
                     data-target="30"

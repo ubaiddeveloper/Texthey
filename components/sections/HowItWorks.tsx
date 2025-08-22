@@ -1,16 +1,129 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MessageCircle, ArrowDown, CheckCircle, RotateCcw } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+// Define the conversation flow - same as Hero section
+const conversationFlow = [
+  { text: "Hey", isUser: true, timestamp: "2:15 PM" },
+  {
+    text: "Hi John, welcome to TextHey!\n\nPlease choose a service from the list below to get started.\n1. Haircut\n2. Shave\n3. Haircut & Shave",
+    isUser: false,
+    timestamp: "2:15 PM",
+  },
+  { text: "3", isUser: true, timestamp: "2:16 PM" },
+  {
+    text: "Great! Who would you like to book with?\n1. John D.\n2. Sarah J.\n3. James S.\n4. No Preference",
+    isUser: false,
+    timestamp: "2:16 PM",
+  },
+  { text: "2", isUser: true, timestamp: "2:17 PM" },
+  {
+    text: "Perfect! Please choose a date for your appointment.\n1. Mon, August 11\n2. Tue, August 12\n3. Wed, August 13\n4. Go back",
+    isUser: false,
+    timestamp: "2:17 PM",
+  },
+  { text: "1", isUser: true, timestamp: "2:18 PM" },
+  {
+    text: "Almost done. Please select a time that works best for you.\n1. 11:00 am\n2. 4:00 pm\n3. 9:30 pm\n4. Go back",
+    isUser: false,
+    timestamp: "2:18 PM",
+  },
+  { text: "2", isUser: true, timestamp: "2:19 PM" },
+  {
+    text: "Your appointment is confirmed, and details are as follows.\n\nTexthey Salon\nHaircut & Shave\nMonday, August 11\n4:00 PM\n\nText 'Change' to this number if you'd like to adjust your booking.\n\nThanks for using Text Hey 😊",
+    isUser: false,
+    timestamp: "2:20 PM",
+  },
+];
+
 const HowItWorks = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  const [messages, setMessages] = useState<
+    Array<{
+      id: number;
+      text: string;
+      isUser: boolean;
+      timestamp: string;
+    }>
+  >([]);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  // Auto-scroll to bottom when new messages are added
+  const scrollToBottom = () => {
+    if (messagesContainerRef.current) {
+      const container = messagesContainerRef.current;
+      gsap.to(container, {
+        scrollTop: container.scrollHeight,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  // Animate message appearance
+  const animateNewMessage = (messageElement: HTMLElement) => {
+    gsap.fromTo(
+      messageElement,
+      {
+        opacity: 0,
+        y: 20,
+        scale: 0.95,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      }
+    );
+  };
+
+  // Add messages with delay
+  useEffect(() => {
+    if (currentMessageIndex < conversationFlow.length) {
+      const timer = setTimeout(
+        () => {
+          const newMessage = {
+            id: currentMessageIndex,
+            ...conversationFlow[currentMessageIndex],
+          };
+
+          setMessages((prev) => [...prev, newMessage]);
+          setCurrentMessageIndex((prev) => prev + 1);
+
+          // Scroll to bottom after message is added
+          setTimeout(scrollToBottom, 100);
+        },
+        currentMessageIndex === 0 ? 1500 : 1800
+      ); // First message after 1.5s, then every 1.8s
+
+      return () => clearTimeout(timer);
+    }
+    // Animation stops at the last message
+  }, [currentMessageIndex]);
+
+  // Animate messages when they appear
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessageElement = document.querySelector(
+        `[data-message-id="${messages[messages.length - 1].id}"]`
+      ) as HTMLElement;
+
+      if (lastMessageElement) {
+        animateNewMessage(lastMessageElement);
+      }
+    }
+  }, [messages]);
 
   useEffect(() => {
-    if (!sectionRef.current || !phoneRef.current) return;
+    if (!sectionRef.current) return;
 
     // Animate steps
     gsap.fromTo(
@@ -34,23 +147,20 @@ const HowItWorks = () => {
       }
     );
 
-    // Animate phone conversation
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: phoneRef.current,
-        start: "top 60%",
-        end: "bottom 40%",
-        toggleActions: "play none none reverse",
+    // Start message animation when phone comes into view
+    const phoneScrollTrigger = ScrollTrigger.create({
+      trigger: phoneRef.current,
+      start: "top 60%",
+      onEnter: () => {
+        // Reset and start the conversation
+        setMessages([]);
+        setCurrentMessageIndex(0);
       },
     });
 
-    tl.from(".message", {
-      y: 20,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.3,
-      ease: "power2.out",
-    });
+    return () => {
+      phoneScrollTrigger.kill();
+    };
   }, []);
 
   const steps = [
@@ -162,53 +272,44 @@ const HowItWorks = () => {
                   </div>
                 </div>
                 {/* Messages */}
-                <div className="p-4 space-y-3 bg-white min-h-[500px]">
-                  <div className="message text-right">
-                    <div className="inline-block bg-brand-cyan text-white px-3 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
-                      BOOK
+                <div
+                  ref={messagesContainerRef}
+                  className="p-3 space-y-2 bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+                >
+                  {messages.length === 0 && (
+                    <div className="flex items-center justify-center h-full">
+                      <div className="text-gray-400 text-sm">
+                        Starting conversation...
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">2:30 PM</div>
-                  </div>
-
-                  <div className="message text-left">
-                    <div className="inline-block bg-gray-100 text-gray-900 px-3 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
-                      Hey! 👋 What service would you like to book? 1. Haircut
-                      ($45) 2. Color ($85) 3. Massage ($60) Reply with a number!
+                  )}
+                  {messages.map((message) => (
+                    <div
+                      key={message.id}
+                      data-message-id={message.id}
+                      className={`text-${message.isUser ? "right" : "left"}`}
+                    >
+                      <div
+                        className={`inline-block px-3 py-2 rounded-2xl max-w-[180px] text-xs leading-relaxed ${
+                          message.isUser
+                            ? "bg-brand-cyan text-white rounded-tr-md"
+                            : "bg-gray-100 text-gray-900 rounded-tl-md"
+                        }`}
+                      >
+                        {message.text.split("\n").map((line, index) => (
+                          <div key={index}>
+                            {line}
+                            {index < message.text.split("\n").length - 1 && (
+                              <br />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1">
+                        {message.timestamp}
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">2:30 PM</div>
-                  </div>
-
-                  <div className="message text-right">
-                    <div className="inline-block bg-brand-cyan text-white px-3 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
-                      1
-                    </div>
-                    <div className="text-xs text-gray-500 mt-1">2:31 PM</div>
-                  </div>
-
-                  <div className="message text-left">
-                    <div className="inline-block bg-gray-100 text-gray-900 px-3 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
-                      Perfect! Here are available times for a haircut: 📅
-                      Tomorrow: • 10:00 AM - Sarah • 2:00 PM - Mike • 4:30 PM -
-                      Sarah Pick one!
-                    </div>
-                    <div className="text-xs text-gray-500 mt-1">2:31 PM</div>
-                  </div>
-
-                  <div className="message text-right">
-                    <div className="inline-block bg-brand-cyan text-white px-3 py-2 rounded-2xl rounded-tr-md max-w-xs text-sm">
-                      2:00 PM - Mike
-                    </div>
-                    <div className="text-xs text-gray-500 mt-1">2:32 PM</div>
-                  </div>
-
-                  <div className="message text-left">
-                    <div className="inline-block bg-brand-pink text-white px-3 py-2 rounded-2xl rounded-tl-md max-w-xs text-sm">
-                      ✅ Booked! Haircut with Mike Tomorrow at 2:00 PM 💳 Pay
-                      now: bit.ly/pay-th123 You&apos;ll get a reminder 2 hours
-                      before!
-                    </div>
-                    <div className="text-xs text-gray-500 mt-1">2:32 PM</div>
-                  </div>
+                  ))}
                 </div>
                 {/* iPhone Home Indicator */}
                 <div className="bg-white px-4 py-2 flex justify-center">

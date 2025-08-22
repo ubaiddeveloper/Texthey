@@ -240,7 +240,7 @@ const Features = () => {
                   <div className="flex items-center justify-between py-2 border-b border-gray-100">
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-xs">🇺🇸</span>
+                        <span className="text-xs">US</span>
                       </div>
                       <div>
                         <div className="text-sm font-medium">New York</div>
@@ -256,7 +256,7 @@ const Features = () => {
                   <div className="flex items-center justify-between py-2 border-b border-gray-100">
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-xs">��</span>
+                        <span className="text-xs">LA</span>
                       </div>
                       <div>
                         <div className="text-sm font-medium">Los Angeles</div>
@@ -272,7 +272,7 @@ const Features = () => {
                   <div className="flex items-center justify-between py-2">
                     <div className="flex items-center">
                       <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-xs">🇺🇸</span>
+                        <span className="text-xs">US</span>
                       </div>
                       <div>
                         <div className="text-sm font-medium">Dallas</div>

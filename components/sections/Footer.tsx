@@ -149,20 +149,11 @@ const Footer = () => {
               © 2025 Text Hey. All rights reserved.
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <div className="text-gray-400 text-sm">
-                Questions? Email{" "}
-                <a
-                  href="mailto:go@texthey.com"
-                  className="text-brand-cyan hover:text-brand-pink underline"
-                >
-                  go@texthey.com
-                </a>
-              </div>
               <div className="flex gap-4">
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-slate-700 text-gray-300 hover:bg-slate-800 hover:text-white"
+                  className="border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white transition-all duration-200"
                 >
                   Book a Demo
                 </Button>

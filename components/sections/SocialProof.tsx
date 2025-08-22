@@ -106,7 +106,7 @@ const SocialProof = () => {
         </div>
 
         {/* Partner Logos */}
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <p className="text-center text-sm text-gray-500 mb-8 uppercase tracking-wide">
             Trusted by leading service businesses
           </p>
@@ -123,17 +123,21 @@ const SocialProof = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="testimonial-card bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 relative"
+              className={`testimonial-card p-8 rounded-2xl transition-all duration-300 relative ${
+                index === 0 || index === 2
+                  ? "bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-brand-pink/30 hover:shadow-lg"
+                  : index === 1
+                  ? "bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300 hover:shadow-lg"
+                  : "bg-gradient-to-br from-slate-50 to-white border border-gray-200 hover:shadow-lg"
+              }`}
             >
-              <Quote className="h-8 w-8 text-brand-cyan/30 mb-4" />
-
               <div className="flex items-center mb-4">
                 {[...Array(testimonial.rating)].map((_, starIndex) => (
                   <Star

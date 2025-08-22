@@ -55,7 +55,7 @@ const Industries = () => {
         "Stylist selection",
         "Color or style consultation scheduling",
       ],
-      color: "from-brand-pink to-brand-pink",
+      color: "from-brand-pink to-rose-500",
       bgGradient: "from-pink-50 to-rose-50",
     },
     {
@@ -68,7 +68,7 @@ const Industries = () => {
         "Package deals",
         "Session duration tracking",
       ],
-      color: "from-brand-pink to-brand-pink",
+      color: "from-purple-500 to-indigo-500",
       bgGradient: "from-purple-50 to-indigo-50",
     },
     {
@@ -94,7 +94,7 @@ const Industries = () => {
         "Easy rescheduling and cancellations",
         "Post-visit follow-up requests",
       ],
-      color: "from-brand-cyan to-brand-cyan",
+      color: "from-blue-500 to-cyan-500",
       bgGradient: "from-blue-50 to-cyan-50",
     },
     {
@@ -107,8 +107,8 @@ const Industries = () => {
         "Flexible scheduling",
         "Client follow-up requests",
       ],
-      color: "from-brand-cyan to-brand-cyan",
-      bgGradient: "from-teal-50 to-cyan-50",
+      color: "from-yellow-500 to-orange-400",
+      bgGradient: "from-yellow-50 to-orange-50",
     },
     {
       icon: Smile,
@@ -210,17 +210,17 @@ const Industries = () => {
 
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gray-200">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-brand-cyan">35%</div>
+                  <div className="text-2xl font-bold text-brand-pink">35%</div>
                   <div className="text-sm text-gray-600">Fewer no-shows</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-brand-cyan">40%</div>
+                  <div className="text-2xl font-bold text-brand-pink">40%</div>
                   <div className="text-sm text-gray-600">
                     More repeat customers
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-brand-cyan">50%</div>
+                  <div className="text-2xl font-bold text-brand-pink">30%</div>
                   <div className="text-sm text-gray-600">Time saved daily</div>
                 </div>
               </div>
@@ -249,9 +249,7 @@ const Industries = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Time Saved</span>
-                    <span className="font-semibold text-brand-cyan">
-                      15 hrs/week
-                    </span>
+                    <span className="font-semibold text-green-600">30%</span>
                   </div>
                 </div>
               </div>
