@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,16 +22,22 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#features", label: "Features" },
-    { href: "#for-your-business", label: "Industries" },
-    { href: "#pricing", label: "Pricing" },
+    { href: "/", label: "Home", isExternal: false },
+    { href: "#features", label: "Features", isExternal: true },
+    { href: "#for-your-business", label: "Industries", isExternal: true },
+    { href: "/pricing", label: "Pricing", isExternal: false },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (href: string, isExternal: boolean) => {
+    if (isExternal && pathname === "/") {
+      // Scroll to section on homepage
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (isExternal && pathname !== "/") {
+      // Navigate to homepage with hash
+      window.location.href = `/${href}`;
     }
     setIsMobileMenuOpen(false);
   };
@@ -57,15 +66,33 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-gray-600 hover:text-slate-900 transition-colors duration-200 font-medium"
-              >
-                {link.label}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.isExternal ? (
+                <button
+                  key={link.href}
+                  onClick={() => handleNavigation(link.href, link.isExternal)}
+                  className={`transition-colors duration-200 font-medium ${
+                    pathname === "/"
+                      ? "text-gray-600 hover:text-slate-900"
+                      : "text-gray-600 hover:text-slate-900"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition-colors duration-200 font-medium ${
+                    pathname === link.href
+                      ? "text-brand-cyan"
+                      : "text-gray-600 hover:text-slate-900"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Desktop CTAs */}
@@ -100,22 +127,27 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg">
             <div className="px-4 py-4 space-y-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navLinks.map((link) =>
+                link.isExternal ? (
+                  <button
+                    key={link.href}
+                    onClick={() => handleNavigation(link.href, link.isExternal)}
+                    className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <div className="border-t border-gray-100 pt-4 space-y-2">
-                <button
-                  onClick={() => scrollToSection("#contact")}
-                  className="block w-full text-left px-3 py-2 text-gray-600 hover:text-slate-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
-                >
-                  Sign In
-                </button>
                 <div className="px-3 space-y-2">
                   <Button
                     variant="outline"
