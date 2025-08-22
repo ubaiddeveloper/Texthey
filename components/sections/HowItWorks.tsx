@@ -287,7 +287,7 @@ const HowItWorks = () => {
                     <div
                       key={message.id}
                       data-message-id={message.id}
-                      className={`text-${message.isUser ? "right" : "left"}`}
+                      className={message.isUser ? "text-right" : "text-left"}
                     >
                       <div
                         className={`inline-block px-3 py-2 rounded-2xl max-w-[180px] text-xs leading-relaxed ${
