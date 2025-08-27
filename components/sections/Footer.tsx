@@ -4,6 +4,7 @@ import { MessageSquare, Twitter, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const footerSections = [
@@ -39,13 +40,26 @@ const Footer = () => {
       title: "Support",
       links: [
         { name: "Contact Us", href: "mailto:go@texthey.com" },
-        { name: "Privacy Policy", href: "#" },
-        { name: "Terms of Service", href: "#" },
+        { name: "Privacy Policy", href: "/privacy" },
+        { name: "Terms of Service", href: "/terms" },
       ],
     },
   ];
 
   const scrollToSection = (href: string) => {
+    // Handle external page links
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
+
+    // Handle mailto links
+    if (href.startsWith("mailto:")) {
+      window.location.href = href;
+      return;
+    }
+
+    // Handle anchor links for sections
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
